@@ -1,14 +1,16 @@
-This Simplex LP solver is implemented according to the CLRS textbook.
+This is an all purpose linear programming solver with Simplex algorithm, it solves linear programs in standard form and also shows steps of calculation.
 
-The names of the variables also comes from the textbook. 
+This Simplex LP solver is implemented according to the CLRS textbook. The naming of the variables also comes from the textbook. 
 
-The main difference is, matrix A is with the same sign as in the slack form, instead of the negatives as in the textbook. Same sign is more readable and easier to follow, though negatives might be somewhat more efficient.
+There are several differences from the textbook:
 
-All of A, b and c are implemented with dictionaries instead of arrays.
+1. Matrix A is with the same sign as in the slack form, instead of the negatives as in the textbook. Same sign is more readable and easier to follow, though negatives might be somewhat more efficient.
 
-v is wrapped in c[-1] so that it can be modified in place.
+2. All of A, b and c are implemented with dictionaries instead of arrays.
 
-In the slack form, A.keys() is equivalent to B, and A[i].keys() is equivalent to N, so both variables are omitted. Additionally, b.keys() is equivalent to B, c.keys() is equivalent to N.
+3. v is wrapped in c[-1] so that it can be modified in place.
+
+4. In the slack form, A.keys() is equivalent to B, and A[i].keys() is equivalent to N, so both variables are omitted. Additionally, b.keys() is equivalent to B, c.keys() is equivalent to N.
 
 ```
 Usage:
@@ -18,17 +20,19 @@ Use -no flag to disable show-steps.
 
 The input should be in a separate file with the following format.
 
-The first line contains two number: number of variables n and number of constraints m
+The first line contains two number: number of variables n and number of constraints m;
 
-The input should be in standard form, which implies a maximization problem.
+The input should be in standard form, which implies a maximization problem;
 
-The next m lines contains the matrix A, with n elements in each row.
+The next m lines contains the matrix A, with n elements in each row;
 
-The next line contains the vector b, and last line contains c.
+the next line contains the vector b;
+
+and last line contains c.
 
 For example, for 
 ```
-maximize  	x1 + 2 x2 + 0.5 x3
+maximize    x1 + 2 x2 + 0.5 x3
 subject to  x1 + x2 + x3 <= 5
             x1 <= 3
             x2 <= 1
